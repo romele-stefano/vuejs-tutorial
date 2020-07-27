@@ -10,11 +10,11 @@
     <div id="vue-app">
       <h1>Keyboard events</h1>
       <label>Name:</label>
-      <!-- modifier enter fire the function only when enter is pressed -->
-      <!-- we can concatenate event modifier .alt.enter will call the function only when the two buttons are pressed together -->
-      <input type="text" v-on:keyup.alt.enter="logName"/>
+      <input type="text" v-model="name" />
+      <span>{{ name }}</span>
       <label>Age:</label>
-      <input type="text" v-on:keyup.alt.enter="logAge"/>
+      <input type="text" v-model="age" />
+      <span> {{ age }}</span>
     </div>
     <!-- load at the bottom otherwise VueJs will not render in page -->
     <script src="app.js"></script>
