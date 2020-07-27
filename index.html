@@ -8,14 +8,27 @@
    </head>
   <body>
     <div id="vue-app">
-      <h1>Conditionals</h1>
-      <button v-on:click="error = !error">Toggle Error</button>
-      <button v-on:click="success = !success">Toggle Success</button>
-      <p v-if="error">There has been an error</p>
-      <!-- this will be evaluated only if the condition above is false -->
-      <p v-else-if="success">Success!</p>
-      <!-- we can also use v-show -->
-      <!-- v-if better initial performance, v-show better if function changes a lot -->
+      <h1>Looping through lists</h1>
+      <ul>
+        <!-- we fetch the index of the array so we can use it -->
+        <li v-for="(character, index) in characters">{{ index }}.{{ character }}</li>
+      </ul>
+      <ul>
+        <li v-for="(ninja, index) in ninjas">{{ index }}.{{ ninja.name }}: {{ ninja.age }}</li>
+      </ul>
+      <!-- we use template so that we will not render anything -->
+      <!-- if we had use <div v-for=...> we will have had several div in our page -->
+      <template v-for="(ninja, index) in ninjas">
+        <h3>{{ index }}.{{ ninja.name }}</h3>
+        <p>{{ ninja.age }}</p>
+      </template>
+      <br>
+      <!-- what if do not know the keys in our object? -->
+      <template v-for="ninja in ninjas">
+        <div v-for="(val, key) in ninja">
+          <p>{{ key }} - {{ val }}</p>
+        </div>
+      </template>
     </div>
 
     <!-- load at the bottom otherwise VueJs will not render in page -->
