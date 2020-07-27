@@ -8,22 +8,16 @@
    </head>
   <body>
     <div id="vue-app">
-      <h1>Dynamic CSS</h1>
-      <h2>Example 1</h2>
-      <!-- we pass an object keys and values -->
-      <!-- in this case the second available refers to the data element of our Vuejs app -->
-      <div v-on:click="available = !available" v-bind:class="{available: available}">
-        <span>Ryu</span>
-      </div>
-      <h2>Example 2</h2>
-      <!-- different approach than above, we are not passing the class directly in html -->
-      <!-- we are using computed element of our Vuejs app -->
-      <button v-on:click="nearby = !nearby">Toggle nearby</button>
-      <button v-on:click="available = !available">Toggle available</button>
-      <div v-bind:class="compClasses">
-        <span>Alex</span>
-      </div>
+      <h1>Conditionals</h1>
+      <button v-on:click="error = !error">Toggle Error</button>
+      <button v-on:click="success = !success">Toggle Success</button>
+      <p v-if="error">There has been an error</p>
+      <!-- this will be evaluated only if the condition above is false -->
+      <p v-else-if="success">Success!</p>
+      <!-- we can also use v-show -->
+      <!-- v-if better initial performance, v-show better if function changes a lot -->
     </div>
+
     <!-- load at the bottom otherwise VueJs will not render in page -->
     <script src="app.js"></script>
   </body>
