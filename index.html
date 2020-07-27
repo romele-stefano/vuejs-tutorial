@@ -8,15 +8,21 @@
    </head>
   <body>
     <div id="vue-app">
-      <h1>Computed properties</h1>
-      <button v-on:click="a++">Add to A</button>
-      <button v-on:click="b++">Add to B</button>
-      <p>A - {{ a }}</p>
-      <p>B - {{ b }}</p>
-      <!-- if we write {{ addToA() }} vue.js will look into the methods of our app -->
-      <!-- if we write {{ addToA }} vue.js will look into the computed properties of our app -->
-      <p>Age + A = {{ addToA }}</p>
-      <p>Age + B = {{ addToB }}</p>
+      <h1>Dynamic CSS</h1>
+      <h2>Example 1</h2>
+      <!-- we pass an object keys and values -->
+      <!-- in this case the second available refers to the data element of our Vuejs app -->
+      <div v-on:click="available = !available" v-bind:class="{available: available}">
+        <span>Ryu</span>
+      </div>
+      <h2>Example 2</h2>
+      <!-- different approach than above, we are not passing the class directly in html -->
+      <!-- we are using computed element of our Vuejs app -->
+      <button v-on:click="nearby = !nearby">Toggle nearby</button>
+      <button v-on:click="available = !available">Toggle available</button>
+      <div v-bind:class="compClasses">
+        <span>Alex</span>
+      </div>
     </div>
     <!-- load at the bottom otherwise VueJs will not render in page -->
     <script src="app.js"></script>
