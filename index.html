@@ -8,21 +8,13 @@
    </head>
   <body>
     <div id="vue-app">
-      <h1>Events</h1>
-      <!-- DOM events are passed to the attribute v-on: -->
-      <!-- we can use @click/@dblclick/@mousemove as a short version -->
-      <!-- Event modifier are additional parameters we can pass (ex. once listen to the event only once) -->
-      <button v-on:click.once="add(1)">Add a year</button>
-      <button v-on:click="subtract(1)">Subtract a year</button>
-      <!-- react to double click -->
-      <button v-on:dblclick="add(10)">Add 10 years</button>
-      <button v-on:dblclick="subtract(10)">Subtract 10 years</button>
-      <p>My age is {{ age }}</p>
-      <div id="canvas" v-on:mousemove="updateXY">
-        {{ x }}, {{ y }}
-      </div>
-      <!-- another event modifier is prevent (prevent default behavior) -->
-      <a v-on:click.prevent="click" href="http://www.thenetninja.co.uk">The Net Ninja</a>
+      <h1>Keyboard events</h1>
+      <label>Name:</label>
+      <!-- modifier enter fire the function only when enter is pressed -->
+      <!-- we can concatenate event modifier .alt.enter will call the function only when the two buttons are pressed together -->
+      <input type="text" v-on:keyup.alt.enter="logName"/>
+      <label>Age:</label>
+      <input type="text" v-on:keyup.alt.enter="logAge"/>
     </div>
     <!-- load at the bottom otherwise VueJs will not render in page -->
     <script src="app.js"></script>
