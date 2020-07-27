@@ -8,11 +8,12 @@
    </head>
   <body>
     <div id="vue-app">
-      <h1>{{ greet('night') }}</h1>
-      <p>Name: {{ name }}</p>
-      <p>Job: {{ job }}</p>
+      <h1>Data Binding</h1>
+      <!-- v-bind is telling Vue to bind the href attribute to the website data in our instance -->
+      <a v-bind:href="website">Github</a>
+      <!-- same result as above but with different way to handle data (see app.hs) -->
+      <p v-html="websiteTag"></p>
     </div>
-
     <!-- load at the bottom otherwise VueJs will not render in page -->
     <script src="app.js"></script>
   </body>
