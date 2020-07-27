@@ -8,11 +8,18 @@
    </head>
   <body>
     <div id="vue-app">
-      <h1>Data Binding</h1>
-      <!-- v-bind is telling Vue to bind the href attribute to the website data in our instance -->
-      <a v-bind:href="website">Github</a>
-      <!-- same result as above but with different way to handle data (see app.hs) -->
-      <p v-html="websiteTag"></p>
+      <h1>Events</h1>
+      <!-- DOM events are passed to the attribute v-on: -->
+      <!-- we can use @click/@dblclick/@mousemove as a short version -->
+      <button v-on:click="add(1)">Add a year</button>
+      <button v-on:click="subtract(1)">Subtract a year</button>
+      <!-- react to double click -->
+      <button v-on:dblclick="add(10)">Add 10 years</button>
+      <button v-on:dblclick="subtract(10)">Subtract 10 years</button>
+      <p>My age is {{ age }}</p>
+      <div id="canvas" v-on:mousemove="updateXY">
+        {{ x }}, {{ y }}
+      </div>
     </div>
     <!-- load at the bottom otherwise VueJs will not render in page -->
     <script src="app.js"></script>

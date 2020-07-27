@@ -1,14 +1,22 @@
 new Vue({
   el:'#vue-app',
   data: {
-    name: 'Stefano',
-    job: 'Full stack Dev',
-    website: 'https://github.com/romele-stefano',
-    websiteTag: '<a href="https://github.com/romele-stefano">Another way to show Github link</a>'
+    age: 29,
+    x: 0,
+    y: 0
   },
   methods: {
-    greet: function(time){
-      return 'Good ' + time + ' ' + this.name
+    add: function(inc){
+      this.age += inc
+    },
+    subtract: function(dec){
+      this.age -= dec
+    },
+    // we automatically get event when there is an event, we do not need to pass it into html
+    updateXY: function(event){
+      // console.log(event)
+      this.x = event.offsetX
+      this.y = event.offsetY
     }
   }
 })
