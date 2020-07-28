@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { bus } from '../main.js'
+
 export default {
   data () {
     return {
@@ -17,9 +19,9 @@ export default {
   },
   methods: {
     changeTitle: function() {
-      // emit event
-      // Vue Wizards is the data we want to pass to App.vue when the event occurs
-      this.$emit('changeTitle', 'Vue Wizards')
+      // emit event on the bus
+      this.title = 'Vue Wizards'
+      bus.$emit('titleChanged', this.title)
     }
   }
 }

@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { bus } from '../main.js'
+
 export default {
   data () {
     return {
@@ -15,6 +17,13 @@ export default {
     title: {
       type: String
     }
+  },
+  created() {
+    // set event listener with a callback function
+    // here data refres to this.title in Header.vue that we pass to the event
+    bus.$on('titleChanged', (data) => {
+      this.title = data
+    })
   }
 }
 </script>
