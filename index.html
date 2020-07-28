@@ -8,12 +8,12 @@
    </head>
   <body>
 
-    <div id="vue-app-one">
-      <greeting></greeting>
-    </div>
-
-    <div id="vue-app-two">
-      <greeting></greeting>
+    <div id="vue-app">
+      <h2>Refs</h2>
+      <!-- ref can be attached to any html tag -->
+      <input type="text" ref="myInput" />
+      <button v-on:click="readRefs">Submit</button>
+      <p>Your fav food: {{ output }}</p>
     </div>
 
     <!-- load at the bottom otherwise VueJs will not render in page -->
