@@ -17,7 +17,9 @@ export default {
   },
   methods: {
     changeTitle: function() {
-      this.title = "Vue Wizards"
+      // emit event
+      // Vue Wizards is the data we want to pass to App.vue when the event occurs
+      this.$emit('changeTitle', 'Vue Wizards')
     }
   }
 }

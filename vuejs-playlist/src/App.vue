@@ -1,6 +1,8 @@
 <template>
     <div>
-        <app-header v-bind:title="title"></app-header>
+        <!-- changeTitle is the event we have defined in Header.vue -->
+        <!-- we need $event to take date we have defined in the event -->
+        <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
         <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
         <app-footer v-bind:title="title"></app-footer>
     </div>
@@ -28,6 +30,12 @@ export default {
                 {name: 'Yoshi', speciality: 'Data Diggin', show: false}
             ],
             title: 'Vue Ninjas'
+        }
+    },
+    methods: {
+        // updatedTitle is passed above with the $event
+        updateTitle: function(updatedTitle){
+            this.title = updatedTitle
         }
     }
 }
