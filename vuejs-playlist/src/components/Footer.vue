@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>{{ copyright }}</p>
+    <p>{{ copyright }} {{ title }}</p>
   </footer>
 </template>
 
@@ -8,7 +8,12 @@
 export default {
   data () {
     return {
-      copyright: 'Copyright 2020 Vue Ninjas'
+      copyright: 'Copyright 2020'
+    }
+  },
+  props: {
+    title: {
+      type: String
     }
   }
 }
