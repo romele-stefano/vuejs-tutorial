@@ -19,16 +19,22 @@
         <label>Warrior</label>
         <input type="checkbox" value="warrior" v-model="blog.categories" />
       </div>
+      <label>Author:</label>
+      <!-- attach v-model directive to the select tag -->
+      <select v-model="blog.author">
+        <option v-for="author in authors" v-bind:key="author">{{ author }}</option>
+      </select>
     </form>
     <br>
     <div id="preview">
       <h3>Preview Blog:</h3>
       <p>Blog title: {{ blog.title }}</p>
+      <p>Author: {{blog.author }}</p>
       <p>Blog content:</p>
       <p> {{ blog.content }}</p>
       <p>Blog categories:</p>
       <ul>
-        <li v-for="category in blog.categories">{{ category }}</li>
+        <li v-for="category in blog.categories" v-bind:key="category">{{ category }}</li>
       </ul>
     </div>
   </div>
@@ -41,8 +47,10 @@ export default {
       blog: {
         title: '',
         content: '',
-        categories:[]
-      }
+        categories:[],
+        author: ''
+      },
+      authors: ['Mario', 'Luigi', 'Bowser']
     }
   }
 }
