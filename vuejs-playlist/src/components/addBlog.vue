@@ -1,7 +1,7 @@
 <template>
   <div id="add-blog">
     <h2>Add a new blog post</h2>
-    <form>
+    <form v-if="!submitted">
       <label>Blog Title:</label>
       <!-- input biding with v-model -->
       <!-- .lazy is a modifier that will show the preview only when we click outside our input field -->
@@ -24,7 +24,12 @@
       <select v-model="blog.author">
         <option v-for="author in authors" v-bind:key="author">{{ author }}</option>
       </select>
+      <!-- prevent the default behaviour -->
+      <button v-on:click.prevent="post">Add blog</button>
     </form>
+    <div v-if="submitted">
+      <h3>Thanks for adding your post</h3>
+    </div>
     <br>
     <div id="preview">
       <h3>Preview Blog:</h3>
@@ -43,14 +48,28 @@
 <script>
 export default {
   data() {
-    return {
+    return{
       blog: {
         title: '',
         content: '',
         categories:[],
         author: ''
       },
-      authors: ['Mario', 'Luigi', 'Bowser']
+      authors: ['Mario', 'Luigi', 'Bowser'],
+      submitted: false
+    }
+  },
+  methods: {
+    post: function(){
+      // return a Promise
+      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
+        title: this.blog.title,
+        body: this.blog.content,
+        userId: 1
+      }).then(function(data){
+        console.log(data)
+        this.submitted = true
+      })
     }
   }
 }

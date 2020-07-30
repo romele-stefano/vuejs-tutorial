@@ -10,8 +10,6 @@ import addBlog from './components/addBlog.vue'
 export default {
   components: {
     'add-blog': addBlog
-  },
-  data() {
   }
 }
 

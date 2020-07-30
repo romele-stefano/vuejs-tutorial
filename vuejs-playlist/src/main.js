@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
+// for http requests
+import VueResource from 'vue-resource'
 
-// create event bus
-export const bus = new Vue();
+Vue.use(VueResource)
 
 new Vue({
   el: '#app',
