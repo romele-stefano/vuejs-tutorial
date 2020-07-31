@@ -1,41 +1,40 @@
 <template>
-  <div id="show-blogs">
-    <h1>All blog articles</h1>
-    <div v-for="blog in blogs" v-bind:key="blog" class="single-blog">
-      <h2>{{ blog.title }}</h2>
-      <p>{{ blog.body }}</p>
+  <!-- column is an argument -->
+  <div v-theme:column="'wide'" id="show-blogs">
+    <h1>All Blog Articles</h1>
+    <div v-for="blog in blogs" v-bind:key="blog.id" class="single-blog">
+      <h2 v-rainbow>{{ blog.title }}</h2>
+      <article>{{ blog.body }}</article>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  data() {
+  data () {
     return {
-      blogs: []
+      blogs: [],
+      wide: '',
+      narrow: ''
     }
   },
   created() {
-    this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
-      // take only first 10 elements from the response
-      this.blogs = data.body.slice(0, 10)
-    })
+    this.$http.get('http://jsonplaceholder.typicode.com/posts').then(function(data){
+      this.blogs = data.body.slice(0,10);
+    });
   }
 }
-
 </script>
 
 <style>
-#show-blogs {
+#show-blogs{
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0px auto;
 }
-
-.single-blog {
+.single-blog{
   padding: 20px;
   margin: 20px 0;
   box-sizing: border-box;
-  background: #eee
+  background: #eee;
 }
 </style>
