@@ -5,13 +5,6 @@ import App from './App.vue'
 // Use vue-resource package
 Vue.use(VueResource);
 
-// Global custom directives
-Vue.directive('rainbow', {
-  bind(el, binding, vnode){
-    el.style.color = "#" + Math.random().toString(16).slice(2, 8);
-  }
-});
-
 // Global filter
 Vue.filter('to-uppercase', function(value){
   return value.toUpperCase()

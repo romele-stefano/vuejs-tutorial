@@ -2,10 +2,13 @@
   <!-- column is an argument -->
   <div v-theme:column="'wide'" id="show-blogs">
     <h1>All Blog Articles</h1>
-    <div v-for="blog in blogs" v-bind:key="blog.id" class="single-blog">
+    <input type="text" v-model="search" placeholder="Serarch blogs" />
+    <!-- we will replace blogs in v-for with the computed property: filteredBlogs -->
+    <!-- initially filteredBlogs is looking for an empty string, retreiving all blog posts -->
+    <div v-for="blog in filteredBlogs" v-bind:key="blog.id" class="single-blog">
       <!-- to-uppercase if the name of the filter, defined in main.js as a global filter -->
       <!-- it is possible to add multiple filter on the same element -->
-      <h2 v-rainbow>{{ blog.title | to-uppercase}}</h2>
+      <h2>{{ blog.title | to-uppercase}}</h2>
       <article>{{ blog.body | snippet}}</article>
     </div>
   </div>
@@ -17,13 +20,22 @@ export default {
     return {
       blogs: [],
       wide: '',
-      narrow: ''
+      narrow: '',
+      search: ''
     }
   },
   created() {
     this.$http.get('http://jsonplaceholder.typicode.com/posts').then(function(data){
       this.blogs = data.body.slice(0,10);
     });
+  },
+  // used for search filter
+  computed: {
+    filteredBlogs: function() {
+      return this.blogs.filter((blog) => {
+        return blog.title.toLowerCase().match(this.search.toLowerCase())
+      })
+    }
   }
 }
 </script>
