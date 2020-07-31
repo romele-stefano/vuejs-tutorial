@@ -3,8 +3,10 @@
   <div v-theme:column="'wide'" id="show-blogs">
     <h1>All Blog Articles</h1>
     <div v-for="blog in blogs" v-bind:key="blog.id" class="single-blog">
-      <h2 v-rainbow>{{ blog.title }}</h2>
-      <article>{{ blog.body }}</article>
+      <!-- to-uppercase if the name of the filter, defined in main.js as a global filter -->
+      <!-- it is possible to add multiple filter on the same element -->
+      <h2 v-rainbow>{{ blog.title | to-uppercase}}</h2>
+      <article>{{ blog.body | snippet}}</article>
     </div>
   </div>
 </template>
