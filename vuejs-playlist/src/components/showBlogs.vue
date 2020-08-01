@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import searchMixin from '../mixins/searchMixin.js';
+
 export default {
   data () {
     return {
@@ -28,14 +30,6 @@ export default {
     this.$http.get('http://jsonplaceholder.typicode.com/posts').then(function(data){
       this.blogs = data.body.slice(0,10);
     });
-  },
-  // used for search filter
-  computed: {
-    filteredBlogs: function() {
-      return this.blogs.filter((blog) => {
-        return blog.title.toLowerCase().match(this.search.toLowerCase())
-      })
-    }
   },
   // Local filter
   filters: {
@@ -56,7 +50,8 @@ export default {
         el.style.color = "#" + Math.random().toString(16).slice(2,8)
       }
     }
-  }
+  },
+  mixins: [searchMixin]
 }
 </script>
 
