@@ -8,7 +8,7 @@
     <div v-for="blog in filteredBlogs" v-bind:key="blog.id" class="single-blog">
       <!-- to-uppercase if the name of the filter, defined in main.js as a global filter -->
       <!-- it is possible to add multiple filter on the same element -->
-      <h2>{{ blog.title | to-uppercase}}</h2>
+      <h2 v-rainbow>{{ blog.title | to-uppercase}}</h2>
       <article>{{ blog.body | snippet}}</article>
     </div>
   </div>
@@ -35,6 +35,26 @@ export default {
       return this.blogs.filter((blog) => {
         return blog.title.toLowerCase().match(this.search.toLowerCase())
       })
+    }
+  },
+  // Local filter
+  filters: {
+    'to-uppercase': function(value){
+      return value.toUpperCase()
+    },
+    // we can write the above filter as
+    // toUppercase(value){
+      // return value.toUpperCase()
+    //}
+    'snippet': function(value){
+      return value.slice(0,100) + '...'
+    }
+  },
+  directives: {
+    'rainbow': {
+      bind(el, binding, vnode){
+        el.style.color = "#" + Math.random().toString(16).slice(2,8)
+      }
     }
   }
 }

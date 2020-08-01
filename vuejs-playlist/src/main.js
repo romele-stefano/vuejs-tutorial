@@ -5,15 +5,6 @@ import App from './App.vue'
 // Use vue-resource package
 Vue.use(VueResource);
 
-// Global filter
-Vue.filter('to-uppercase', function(value){
-  return value.toUpperCase()
-})
-
-Vue.filter('snippet', function(value){
-  return value.slice(0,100) + '...'
-})
-
 Vue.directive('theme', {
   bind(el, binding, vnode){
     if (binding.value == 'wide'){
