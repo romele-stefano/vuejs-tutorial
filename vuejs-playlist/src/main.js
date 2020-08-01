@@ -1,9 +1,19 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import App from './App.vue'
+import VueRouter from 'vue-router'
+import Routes from './routes.js'
 
 // Use vue-resource package
-Vue.use(VueResource);
+Vue.use(VueResource)
+Vue.use(VueRouter)
+
+// create new instance of VueRouter
+const router = new VueRouter({
+  // mode history to remove # from url
+  mode: 'history',
+  routes: Routes
+})
 
 Vue.directive('theme', {
   bind(el, binding, vnode){
@@ -22,5 +32,6 @@ Vue.directive('theme', {
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  router: router
 })
